@@ -174,10 +174,6 @@ a {
         max-width: 260px;
     }
 
-    .arrow {
-        max-height: 50px;
-    }
-
     .thumbnail-item + .thumbnail-item {
         margin-top: 20px;
     }

@@ -37,24 +37,25 @@ function setDetailsFromThumb(thumbnail) {
 
 function getCurrentPic() {
     var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
-    var imgsrc = detailImage.getAttribute('src');
+    const imgsrc = detailImage.getAttribute('src');
     return parseInt(imgsrc[imgsrc.length - 5]);
 }
-
 
 function prevPicture() {
     'use strict';
     document.getElementById("prev").addEventListener("click", function(event) {
         event.preventDefault();
         var num = getCurrentPic();
+        console.log("Afer num calc:" + num);
         var thumbnailArrayTemp = getThumbnailsArray();
-        if(num < 2)
-            return;
+        if(num < 2) {
+            console.log("Previous Arrow: " + num);
+            setDetailsFromThumb(thumbnailArrayTemp[num-1]);
+        }
         else
             setDetailsFromThumb(thumbnailArrayTemp[num-2]);
     });
 }
-
 
 function nextPicture() {
     'use strict';
@@ -62,26 +63,26 @@ function nextPicture() {
         event.preventDefault();
         var num = getCurrentPic();
         var thumbnailArrayTemp = getThumbnailsArray();
-        if(num > 4)
-            return;
+        console.log("Next Arrow: " + num);
+        if(num > 4) {
+            console.log("Next Arrow: " + num);
+            setDetailsFromThumb(thumbnailArrayTemp[num-1]);
+        }
         else
             setDetailsFromThumb(thumbnailArrayTemp[num]);
     });
 }
 
-
 function addThumbClickHandler(thumb) {
     'use strict';
-    prevPicture();
-    nextPicture();
-
+   
     thumb.addEventListener('click', function(event) {
         event.preventDefault();
-
         setDetailsFromThumb(thumb);
         showDetails();
     });
 }
+
 
 function getThumbnailsArray() {
     'use strict';
@@ -119,8 +120,13 @@ function addKeyPressHandler() {
 
 function initializeEvents() {
     'use strict';
+    
     var thumbnails = getThumbnailsArray();
     thumbnails.forEach(addThumbClickHandler);
+    
+    prevPicture();
+    nextPicture();
+
     addKeyPressHandler();
 }
 
