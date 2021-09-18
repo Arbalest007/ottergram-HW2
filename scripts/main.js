@@ -43,40 +43,38 @@ function getCurrentPic() {
 
 function prevPicture() {
     'use strict';
-    document.getElementById("prev").addEventListener("click", function(event) {
+    document.getElementById("prev").addEventListener("click", function (event) {
         event.preventDefault();
         var num = getCurrentPic();
         console.log("Afer num calc:" + num);
         var thumbnailArrayTemp = getThumbnailsArray();
-        if(num < 2) {
+        if (num < 2) {
             console.log("Previous Arrow: " + num);
-            setDetailsFromThumb(thumbnailArrayTemp[num-1]);
-        }
-        else
-            setDetailsFromThumb(thumbnailArrayTemp[num-2]);
+            setDetailsFromThumb(thumbnailArrayTemp[num - 1]);
+        } else
+            setDetailsFromThumb(thumbnailArrayTemp[num - 2]);
     });
 }
 
 function nextPicture() {
     'use strict';
-    document.getElementById("next").addEventListener("click", function(event) {
+    document.getElementById("next").addEventListener("click", function (event) {
         event.preventDefault();
         var num = getCurrentPic();
         var thumbnailArrayTemp = getThumbnailsArray();
         console.log("Next Arrow: " + num);
-        if(num > 4) {
+        if (num > 4) {
             console.log("Next Arrow: " + num);
-            setDetailsFromThumb(thumbnailArrayTemp[num-1]);
-        }
-        else
+            setDetailsFromThumb(thumbnailArrayTemp[num - 1]);
+        } else
             setDetailsFromThumb(thumbnailArrayTemp[num]);
     });
 }
 
 function addThumbClickHandler(thumb) {
     'use strict';
-   
-    thumb.addEventListener('click', function(event) {
+
+    thumb.addEventListener('click', function (event) {
         event.preventDefault();
         setDetailsFromThumb(thumb);
         showDetails();
@@ -101,18 +99,18 @@ function showDetails() {
     var frame = document.querySelector(DETAIL_FRAME_SELECTOR);
     document.body.classList.remove(HIDDEN_DETAIL_CLASS);
     frame.classList.add(TINY_EFFECT_CLASS);
-    setTimeout(function() {
+    setTimeout(function () {
         frame.classList.remove(TINY_EFFECT_CLASS);
     }, 50);
 }
 
 function addKeyPressHandler() {
     'use strict';
-    document.body.addEventListener('keyup', function(event) {
+    document.body.addEventListener('keyup', function (event) {
         event.preventDefault();
         console.log(event.keyCode);
 
-        if(event.keyCode === ESC_KEY) {
+        if (event.keyCode === ESC_KEY) {
             hideDetails();
         }
     });
@@ -120,10 +118,10 @@ function addKeyPressHandler() {
 
 function initializeEvents() {
     'use strict';
-    
+
     var thumbnails = getThumbnailsArray();
     thumbnails.forEach(addThumbClickHandler);
-    
+
     prevPicture();
     nextPicture();
 

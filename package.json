@@ -1,0 +1,22 @@
+{
+  "name": "ottergram-hw2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arbalest007/ottergram-HW2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arbalest007/ottergram-HW2/issues"
+  },
+  "homepage": "https://github.com/Arbalest007/ottergram-HW2#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
